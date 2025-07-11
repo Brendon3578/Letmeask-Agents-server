@@ -1,40 +1,50 @@
-# NLW Agents Server
+# NLW Agents - Server
 
-## Drizzle Commands
+Este projeto é o backend da aplicação "NLW Agents", desenvolvido durante o evento Next Level Week (NLW) da Rocketseat.
 
-Drizzle is used for managing and running database migrations in this project.
+## Tecnologias Utilizadas
 
-- **Run migrations:**  
-Apply all pending migrations to your database.
+A API foi construída utilizando um conjunto de tecnologias modernas e performáticas para garantir escalabilidade e manutenibilidade.
 
-```bash
-npm run drizzle-kit migrate
-```
+- **Node.js:** Ambiente de execução JavaScript no servidor.
+- **TypeScript:** Superset do JavaScript que adiciona tipagem estática ao código.
+- **Fastify:** Framework web focado em alta performance e baixo overhead.
+- **Drizzle ORM:** ORM (Object-Relational Mapper) moderno e seguro para interagir com o banco de dados.
+- **Zod:** Biblioteca para declaração e validação de esquemas de dados.
 
-- **Open Drizzle Studio:**  
-Launch Drizzle Studio, a web UI for managing and inspecting your database.
+## Configuração do Projeto
 
-```bash
-npx drizzle-kit studio
-```
+Siga os passos abaixo para configurar e executar o projeto em seu ambiente de desenvolvimento.
 
-## Setup
+1. **Instale as dependências:**
 
-1. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm install
-```
+2. **Configure as variáveis de ambiente:**  
+    Copie o arquivo de exemplo `.env.example` e renomeie para `.env`. Em seguida, preencha as variáveis com as suas credenciais, especialmente as do banco de dados.
 
-2. Copy the example environment file and configure your variables:
+    ```bash
+    cp .env.example .env
+    ```
 
-```bash
-cp .env.example .env
-```
+3. **Execute as migrações do banco de dados:**  
+    Este comando aplicará todas as migrações pendentes e criará as tabelas necessárias no seu banco de dados.
 
-3. Run the migrations as shown above.
+    ```bash
+    npm run drizzle-kit migrate
+    ```
 
-## Useful Links
+4. **Inicie o servidor:**
 
-- [Drizzle ORM Documentation](https://orm.drizzle.team/docs)
-- [Drizzle Studio](https://orm.drizzle.team/docs/studio)
+    ```bash
+    npm run dev
+    ```
+
+## Scripts Úteis
+
+- `npm run dev`: Inicia o servidor em modo de desenvolvimento com hot-reload.
+- `npx drizzle-kit generate`: Gerar o schema do banco
+- `npx drizzle-kit migrate`: Aplica as migrações do banco de dados.
+- `npx drizzle-kit studio`: Abre a interface web do Drizzle Studio para inspecionar e gerenciar o banco de dados.
