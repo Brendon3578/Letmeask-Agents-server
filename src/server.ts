@@ -1,11 +1,12 @@
-import { fastify } from "fastify";
 import fastifyCors from "@fastify/cors";
+import { fastify } from "fastify";
 import {
   serializerCompiler,
   validatorCompiler,
   type ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { env } from "./env.ts";
+import { getRoomsRoute } from "./http/routes/get-rooms.ts";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -16,9 +17,11 @@ app.register(fastifyCors, {
 app.setSerializerCompiler(serializerCompiler);
 app.setValidatorCompiler(validatorCompiler);
 
-app.get("/health", (req, reply) => {
+app.get("/health", (_, reply) => {
   return reply.status(200).send({ message: "OK" });
 });
+
+app.register(getRoomsRoute);
 
 app.listen({ port: env.PORT }).then(() => {
   console.log(`HTTP Server Running at http://localhost:${env.PORT}`);
