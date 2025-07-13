@@ -21,7 +21,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Sala de teste",
+  "name": "Sala de teste nova",
   "description": "Sala de teste description"
 }
 

@@ -20,6 +20,10 @@ export const createQuestionRoute: FastifyPluginCallbackZod = (app) => {
       const { roomId } = request.params;
       const { question } = request.body;
 
+      if (!roomId) {
+        throw new Error("Room Id not defined.");
+      }
+
       console.log(roomId, question);
 
       const result = await db
