@@ -1,50 +1,79 @@
-# NLW Agents - Server
+# Letmeask Agents — Server
 
-Este projeto é o backend da aplicação "NLW Agents", desenvolvido durante o evento Next Level Week (NLW) da Rocketseat.
+Este projeto é a API RESTful da plataforma **Letmeask Agents**, responsável por processar e armazenar perguntas e respostas em tempo real com suporte à **inteligência artificial generativa (IA)**.
 
-## Tecnologias Utilizadas
+A aplicação é responsável por fazer:
 
-A API foi construída utilizando um conjunto de tecnologias modernas e performáticas para garantir escalabilidade e manutenibilidade.
+- Upload de áudios
+- Transcrição via **Gemini AI**
+- Geração de textos via similaridade com **embeddings vetoriais**
+- Respostas contextuais com base no conteúdo.
 
-- **Node.js:** Ambiente de execução JavaScript no servidor.
-- **TypeScript:** Superset do JavaScript que adiciona tipagem estática ao código.
-- **Fastify:** Framework web focado em alta performance e baixo overhead.
-- **Drizzle ORM:** ORM (Object-Relational Mapper) moderno e seguro para interagir com o banco de dados.
-- **Zod:** Biblioteca para declaração e validação de esquemas de dados.
+---
 
-## Configuração do Projeto
+## ⚙️ Funcionalidades da Aplicação
 
-Siga os passos abaixo para configurar e executar o projeto em seu ambiente de desenvolvimento.
+- **Criação de Salas**: Permite que autores criem salas públicas ou privadas para organizar conteúdos e interações.
+- **Postagem de Perguntas**: Usuários podem fazer perguntas dentro de cada sala, relacionadas ao conteúdo apresentado.
+- **Respostas Manuais e por IA**: O autor pode responder perguntas manualmente, ou contar com uma resposta automática gerada pela IA.
+- **Upload de Áudios**: O autor pode enviar áudios explicativos sobre o conteúdo apresentado na aula.
+- **Transcrição com Gemini AI**: Os áudios enviados são transcritos automaticamente usando o modelo de linguagem da Google.
+- **Geração de Embeddings**: Os textos transcritos são convertidos em vetores para consultas rápidas e contextuais.
+- **Respostas Contextuais por IA**: As perguntas dos usuários são respondidas com base nos embeddings criados a partir dos áudios, proporcionando respostas mais precisas e contextualizadas.
+- **Gerenciamento de Banco de Dados**: Utiliza PostgreSQL e Drizzle ORM para operações relacionais e armazenamento seguro.
 
-1. **Instale as dependências:**
+---
 
-    ```bash
-    npm install
-    ```
+## 🧰 Tecnologias Utilizadas
 
-2. **Configure as variáveis de ambiente:**  
-    Copie o arquivo de exemplo `.env.example` e renomeie para `.env`. Em seguida, preencha as variáveis com as suas credenciais, especialmente as do banco de dados.
+- [Fastify](https://www.fastify.io/) - Framework Node.js altamente performático para construção de APIs RESTful.
+- [Node.js](https://nodejs.org/) - Ambiente de execução para JavaScript no servidor.
+- [PostgreSQL](https://www.postgresql.org/) - Banco de dados relacional robusto e confiável.
+- [Drizzle ORM](https://orm.drizzle.team/) - ORM TypeScript para manipulação segura e tipada de banco de dados.
+- [Google Generative AI (Gemini API)](https://ai.google.dev/) - API de inteligência artificial da Google para transcrição e geração de conteúdo.
+- [Zod](https://zod.dev/) - Biblioteca para validação e tipagem de esquemas em TypeScript.
+- [Biome.js](https://biomejs.dev/) - Linter e formatter para código JavaScript/TypeScript moderno.
+- [UltraCite](https://github.com/ultracite/ultracite) - Ferramenta complementar ao Biome para padronização de projetos.
 
-    ```bash
-    cp .env.example .env
-    ```
+---
 
-3. **Execute as migrações do banco de dados:**  
-    Este comando aplicará todas as migrações pendentes e criará as tabelas necessárias no seu banco de dados.
+## 🚀 Como Executar
 
-    ```bash
-    npm run drizzle-kit migrate
-    ```
+### 1. Clonar o Repositório
 
-4. **Inicie o servidor:**
+```bash
+git clone https://github.com/Brendon3578/letmeask-agents.git
+cd letmeask-agents/server
+```
 
-    ```bash
-    npm run dev
-    ```
+### 2. Instalar as Dependências
 
-## Scripts Úteis
+```bash
+npm install
+```
 
-- `npm run dev`: Inicia o servidor em modo de desenvolvimento com hot-reload.
-- `npx drizzle-kit generate`: Gerar o schema do banco
-- `npx drizzle-kit migrate`: Aplica as migrações do banco de dados.
-- `npx drizzle-kit studio`: Abre a interface web do Drizzle Studio para inspecionar e gerenciar o banco de dados.
+### 3. Executar o Projeto
+
+```bash
+# Para ambiente de produção
+npm start
+
+# Para ambiente de desenvolvimento
+npm run dev
+```
+
+Também é possível usar os seguintes scripts:
+
+- `npm run db:seed`: Executa o seed de dados no banco, útil para popular com dados iniciais.
+- `npm run db:generate`: Gera as migrações do banco com base nas mudanças no schema.
+- `npm run db:migrate`: Aplica as migrações pendentes no banco de dados.
+- `npm run db:studio`: Abre uma interface visual para navegar no banco com Drizzle Studio.
+
+> [!WARNING]
+> Não esqueça de configurar o arquivo `.env` com as variáveis necessárias antes de rodar os scripts, pegue como exemplo o arquivo `example.env`.
+
+---
+
+<h3 align="center">
+    Feito com ☕ por <a href="https://github.com/Brendon3578">Brendon Gomes</a>
+</h3>
