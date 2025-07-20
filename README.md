@@ -17,7 +17,19 @@ A aplicação é responsável por fazer:
 
 Link do repositório da aplicação Frontend: [Letmeask Agents - Web](https://github.com/Brendon3578/Letmeask-Agents-web)
 
----
+## 🔮 Descrição do Projeto
+
+Letmeask Agents é uma plataforma web de perguntas e respostas (Q&A) voltada para o ambiente educacional. Ela permite que autores criem salas interativas, compartilhem áudios explicativos sobre um conteúdo e recebam perguntas dos participantes.
+
+O grande diferencial do projeto é a integração com a IA generativa Gemini, que transcreve os áudios enviados, gera representações vetoriais (embeddings) e, com base nisso, fornece respostas automáticas e contextuais para as perguntas feitas nas salas.
+
+Ele também serve como uma aplicação prática para explorar conceitos como:
+
+- Transcrição e compreensão de linguagem natural (NLU)
+- Uso de IA generativa para educação
+- Banco de dados vetoriais e embeddings
+- Arquitetura moderna full-stack escalável
+- Ideal para instituições, cursos online e qualquer cenário que envolva ensino com sessões gravadas.
 
 ## ⚙️ Funcionalidades da Aplicação
 
