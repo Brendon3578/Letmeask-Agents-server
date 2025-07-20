@@ -1,4 +1,4 @@
-# Letmeask Agents — Server
+# Letmeask Agents - Server
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Fastify](https://img.shields.io/badge/fastify-%23000000.svg?style=for-the-badge&logo=fastify&logoColor=white)
@@ -14,6 +14,18 @@ A aplicação é responsável por fazer:
 - Transcrição via **Gemini AI**
 - Geração de textos via similaridade com **embeddings vetoriais**
 - Respostas contextuais com base no conteúdo.
+
+<p align="center">
+    <kbd>
+        <img src="./.github/image01.png" style="border-radius: 5px" alt="Exemplo de execução" width="1000px">
+    </kbd>
+</p>
+
+<p align="center">
+    <kbd>
+        <img src="./.github/image02.png" style="border-radius: 5px" alt="Exemplo de execução" width="1000px">
+    </kbd>
+</p>
 
 Link do repositório da aplicação Frontend: [Letmeask Agents - Web](https://github.com/Brendon3578/Letmeask-Agents-web)
 
@@ -73,7 +85,45 @@ cd letmeask-agents/server
 npm install
 ```
 
-### 3. Executar o Projeto
+### 3. Configurar Banco de Dados Postgre
+
+A aplicação exige um banco PostgreSQL com suporte à extensão pgvector para armazenar embeddings gerados pela IA. Você pode configurar de três maneiras:
+
+1. Usando Docker Compose (recomendado para testes locais)
+
+    Crie um arquivo docker-compose.yaml com o seguinte conteúdo:
+
+    ```yaml
+    services:
+      nlw-agents-pg:
+        image: pgvector/pgvector:pg17
+        environment:
+          POSTGRES_USER: docker
+          POSTGRES_PASSWORD: docker
+          POSTGRES_DB: docker
+        ports:
+          - "5432:5432"
+        volumes:
+          - ./docket/setup.sql:docker-entrypoint-initdb.d/setup.sql
+    ```
+
+1. Usando PostgreSQL Localmente (sem Docker)
+
+    Você pode instalar o PostgreSQL em sua máquina (versão 14 ou superior com suporte à extensão pgvector) e criar manualmente o banco de dados, usuário e extensão:
+
+    ```SQL
+    CREATE DATABASE letmeask;
+    CREATE EXTENSION IF NOT EXISTS vector;
+    ```
+
+1. Usando [Supabase](https://supabase.com/) (hospedagem online)
+
+    Você pode também criar um projeto no Supabase, habilitar a extensão pgvector e copiar a URL de conexão.Este foi o método utilizado no desenvolvimento do projeto.
+
+> [!WARNING]
+> Após criar o banco, preencha corretamente as variáveis no arquivo .env com os dados de conexão (exemplo: DATABASE_URL=postgres://...).
+
+### 4. Executar o Projeto
 
 ```bash
 # Para ambiente de produção
@@ -81,6 +131,7 @@ npm start
 
 # Para ambiente de desenvolvimento
 npm run dev
+
 ```
 
 Também é possível usar os seguintes scripts:
@@ -90,11 +141,13 @@ Também é possível usar os seguintes scripts:
 - `npm run db:migrate`: Aplica as migrações pendentes no banco de dados.
 - `npm run db:studio`: Abre uma interface visual para navegar no banco com Drizzle Studio.
 
-> [!WARNING]
+> [!TIP]
 > Não esqueça de configurar o arquivo `.env` com as variáveis necessárias antes de rodar os scripts, pegue como exemplo o arquivo `example.env`.
+
+É possível testar também as rotas do projeto via arquivo [client.http](./client.http) com a extensão REST Client do Visual Code
 
 ---
 
 <h3 align="center">
-    Feito com ☕ por <a href="https://github.com/Brendon3578">Brendon Gomes</a>
+    Projeto feito com ☕ por <a href="https://github.com/Brendon3578">Brendon Gomes</a> durante a NLW Agents
 </h3>
