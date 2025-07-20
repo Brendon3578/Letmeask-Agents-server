@@ -1,5 +1,11 @@
 # Letmeask Agents — Server
 
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Fastify](https://img.shields.io/badge/fastify-%23000000.svg?style=for-the-badge&logo=fastify&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Zod](https://img.shields.io/badge/zod-%233068b7.svg?style=for-the-badge&logo=zod&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
+
 Este projeto é a API RESTful da plataforma **Letmeask Agents**, responsável por processar e armazenar perguntas e respostas em tempo real com suporte à **inteligência artificial generativa (IA)**.
 
 A aplicação é responsável por fazer:
@@ -8,6 +14,8 @@ A aplicação é responsável por fazer:
 - Transcrição via **Gemini AI**
 - Geração de textos via similaridade com **embeddings vetoriais**
 - Respostas contextuais com base no conteúdo.
+
+Link do repositório da aplicação Frontend: [Letmeask Agents - Web](https://github.com/Brendon3578/Letmeask-Agents-web)
 
 ---
 
